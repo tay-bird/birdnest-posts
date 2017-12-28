@@ -1,0 +1,5 @@
+Flask==0.10.1
+mistune==0.8.3
+boto3==1.5.6
+flask-dynamo==0.1.2
+yubico-client==1.10.0
