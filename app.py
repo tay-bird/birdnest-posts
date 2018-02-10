@@ -87,7 +87,7 @@ def edit(id):
         else:
             response = render_template('edit.html', post=post)
 
-        return response
+    return response
 
 
 @app.route('/post/<id>/delete', methods=['GET', 'POST'])
