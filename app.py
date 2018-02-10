@@ -52,6 +52,44 @@ def post(id):
     return response
 
 
+@app.route('/post/<id>/edit', methods=['GET', 'POST'])
+def edit(id):
+    if request.method == 'POST':
+        try:
+            verify_otp(request.form['otp'])
+
+        except ValueError:
+            response = ('', 400)
+
+        else:
+            dynamo.tables['posts'].update_item(
+                Key={ 'id': int(id) },
+                UpdateExpression='SET edit = :edit, title = :title, content = :content',
+                ExpressionAttributeValues={
+                    ':edit': datetime.datetime.now().strftime("%Y-%m-%d"),
+                    ':title': request.form['title'].strip(),
+                    ':content': request.form['content']
+                }
+            )
+
+        response = '=)'
+           
+
+    else:
+        try:
+            post = dynamo.tables['posts'].get_item(
+                Key={ 'id': int(id) }
+            )['Item']
+
+        except KeyError:
+            response = ('', 404)
+
+        else:
+            response = render_template('edit.html', post=post)
+
+        return response
+
+
 @app.route('/post/<id>/delete', methods=['GET', 'POST'])
 def delete(id):
     if request.method == 'POST':
@@ -87,7 +125,7 @@ def new():
                 Item={
                     'id': int(time.time()),
                     'date': datetime.datetime.now().strftime("%Y-%m-%d"),
-                    'title': request.form['title'],
+                    'title': request.form['title'].strip(),
                     'content': request.form['content']
                 }
             )
