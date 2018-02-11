@@ -20,7 +20,7 @@
         "s3_bucket": "zappa-52izqy3ze",
         "lets_encrypt_expression": "rate(15 days)",
         "lets_encrypt_key": "s3://taybird-birdnest-letsencrypt-accountkey/account.key",
-        "log_level": "INFO",
+        "log_level": "WARN",
         "domain": "posts.taybird.com"
     },
 
