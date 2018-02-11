@@ -4,13 +4,14 @@ import sys
 import time
 
 import boto3
-from flask import Flask, render_template, request
+from flask import Flask, render_template, redirect, request
 from flask_dynamo import Dynamo
 import mistune
 from yubico_client import Yubico
 
 
 app = Flask(__name__)
+
 app.config['DYNAMO_TABLES'] = [
     {
          'TableName': 'posts',
@@ -136,6 +137,11 @@ def new():
 
     else:
         return render_template('new.html')
+
+
+@app.route('/favicon.ico')
+def favicon():
+    return redirect('https://taybird.com/favicon.ico')
 
 
 @app.route('/health')
