@@ -36,6 +36,7 @@ def posts():
 
 
 @app.route('/post/<id>')
+@app.route('/<id>')
 def post(id):
     try:
         post = dynamo.tables['posts'].get_item(
@@ -52,7 +53,8 @@ def post(id):
     return response
 
 
-@app.route('/post/<id>/edit', methods=['GET', 'POST'])
+@app.route('/posts/<id>/edit', methods=['GET', 'POST'])
+@app.route('/<id>/edit', methods=['GET', 'POST'])
 def edit(id):
     if request.method == 'POST':
         try:
@@ -91,6 +93,7 @@ def edit(id):
 
 
 @app.route('/post/<id>/delete', methods=['GET', 'POST'])
+@app.route('/<id>/delete', methods=['GET', 'POST'])
 def delete(id):
     if request.method == 'POST':
         try:
