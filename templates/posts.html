@@ -3,14 +3,14 @@
 {% block title %}Birdnest Posts{% endblock %}
 
 {% block content %}
-  </head>
-  <body>
-    <article>
-      {% for post in posts %}
-        <section>
+  <main>
+    {% for post in posts %}
+      <article>
+        <header>
           <a href="{{ url_for('post', id=post.id) }}">{{ post.title }}</a> <small>{{ post.date }}</small><br />
-        </section>
+        </header>
         <br />
-      {% endfor %}
-    </acticle>
+      </acticle>
+    {% endfor %}
+  </main>
 {% endblock %}
