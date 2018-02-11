@@ -8,7 +8,7 @@
     <meta property="og:type" content="article" />
     <meta name="twitter:card" content="summary" />
     <meta name="twitter:creator" content="@awildtaybird" />
-    {% if self.article_title() %}<meta property="og:title" content="{{ self.article_title() }}" />{% endif %}
+    {% if self.article_title is defined %}<meta property="og:title" content="{{ self.article_title() }}" />{% endif %}
     {% if self.article_description is defined %}<meta property="og:description" content="{{ self.article_description() }}" />{% endif %}
     {% if self.article_url is defined %}<meta property="og:url" content="{{ self.article_url() }}" />{% endif %}
     {% if self.article_image is defined %}<meta property="og:image" content="{{ self.article_image() }}" />{% endif %}
@@ -17,17 +17,17 @@
 {% block content %}
         <section>
             <article>
-                {% if self.article_title() or self.article_subtitle() %}
+                {% if self.article_title is defined or self.article_subtitle is defined %}
                     <header>
-                        {% if self.article_title() %}
+                        {% if self.article_title is defined %}
                             <h1>{{ self.article_title() }}</h1>
                         {% endif %}
-                        {% if self.article_subtitle() %}
+                        {% if self.article_subtitle is defined %}
                             <p><small>{{ self.article_subtitle() }}</small></p>
                         {% endif %}
                     </header>
                 {% endif %}
-                {% if self.article_content() %}
+                {% if self.article_content is defined %}
                     <section>
                         <p>{{ self.article_content() }}</p>
                     </section>
