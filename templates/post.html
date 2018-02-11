@@ -1,22 +1,10 @@
-{% extends "layout.html" %}
+{% extends "layout_article.html" %}
 
-{% block title %}{{ post.title }}{% endblock %}
-
-{% block content %}
-<article>
-    <header>
-    <h1>{{ post.title }}</h1>
-    <p>
-      <small>
-      Written {{ post.date }}
-      {% if 'edit' in post %}
-        <i>(Edited {{ post.edit }})</i>
-      {% endif %}
-    </small>
-  </p>
-  </header>
-  <section>
-    <p>{{ post.html|safe }}</p>
-  </section>
-</article>
+{% block article_title %}{{ post.title }}{% endblock %}
+{% block article_subtitle %}
+  Written {{ post.date }}
+  {% if 'edit' in post %}
+    <i>(Edited {{ post.edit }})</i>
+  {% endif %}
 {% endblock %}
+{% block article_content %}{{ post.html|safe }}{% endblock %}

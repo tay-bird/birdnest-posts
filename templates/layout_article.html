@@ -1,0 +1,26 @@
+{% extends "layout.html" %}
+
+{% block title %}{% block article_title %}{% endblock %}{% endblock %}
+{% block content %}
+<article>
+  {% if self.article_title() or self.article_subtitle() %}
+    <header>
+      {% if self.article_title() %}
+        <h1>{{ self.article_title() }}</h1>
+      {% endif %}
+      {% if self.article_subtitle() %}
+        <p>
+          <small>
+            {% block article_subtitle %}{% endblock %}
+          </small>
+        </p>
+      {% endif %}
+    </header>
+  {% endif %}
+  {% if self.article_content() %}
+    <section>
+      <p>{% block article_content %}{% endblock %}</p>
+    </section>
+  {% endif %}
+</article>
+{% endblock %}
