@@ -9,7 +9,7 @@ html {
 article {
     border-radius: 5px;
     padding: 10px;
-    float: center;
+    margin: auto;
 }
 
 section {
@@ -19,9 +19,14 @@ section {
 }
 
 header {
-    margin-left: auto;
-    margin-right: auto;
+    align-items: center;
     background: rgba(0,0,0,0.2);
     border-radius: 5px;
     padding: 10px;
 }
+
+@media screen and (min-width: 900px) {
+
+    article {
+        max-width: 50%
+    }
