@@ -5,11 +5,12 @@
 {% block content %}
   </head>
   <body>
-    <section>
+    <article>
       {% for post in posts %}
-        <article>
+        <section>
           <a href="{{ url_for('post', id=post.id) }}">{{ post.title }}</a> <small>{{ post.date }}</small><br />
-        </article>
+        </section>
+        <br />
       {% endfor %}
-    </section>
+    </acticle>
 {% endblock %}
