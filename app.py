@@ -31,7 +31,7 @@ dynamo = Dynamo(app)
 def posts():
     posts = dynamo.tables['posts'].scan()['Items']
     logging.info(posts)
-    posts.sort(key=lambda item:item['date'], reverse=False)
+    posts.sort(key=lambda item:item['date'], reverse=True)
     return render_template('posts.html', posts=posts)
 
 
