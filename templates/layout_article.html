@@ -15,21 +15,23 @@
 {% endblock %}
 
 {% block content %}
-    <article>
-        {% if self.article_title() or self.article_subtitle() %}
-            <header>
-                {% if self.article_title() %}
-                    <h1>{{ self.article_title() }}</h1>
+        <section>
+            <article>
+                {% if self.article_title() or self.article_subtitle() %}
+                    <header>
+                        {% if self.article_title() %}
+                            <h1>{{ self.article_title() }}</h1>
+                        {% endif %}
+                        {% if self.article_subtitle() %}
+                            <p><small>{{ self.article_subtitle() }}</small></p>
+                        {% endif %}
+                    </header>
                 {% endif %}
-                {% if self.article_subtitle() %}
-                    <p><small>{{ self.article_subtitle() }}</small></p>
+                {% if self.article_content() %}
+                    <section>
+                        <p>{{ self.article_content() }}</p>
+                    </section>
                 {% endif %}
-            </header>
-        {% endif %}
-        {% if self.article_content() %}
-            <section>
-                <p>{{ self.article_content() }}</p>
-            </section>
-        {% endif %}
-    </article>
+            </article>
+        </section>
 {% endblock %}

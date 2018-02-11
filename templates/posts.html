@@ -1,15 +1,17 @@
 {% extends "layout.html" %}
 
-{% block title %}Birdnest Posts{% endblock %}
+{% block title %}Birds And Other Things{% endblock %}
 
 {% block content %}
-  <main>
-    {% for post in posts %}
-      <article>
-        <header>
-          <a href="{{ url_for('post', id=post.id) }}">{{ post.title }}</a> <small>{{ post.date }}</small><br />
-        </header>
-      </article>
-    {% endfor %}
-  </main>
+    <nav>
+        {% for post in posts %}
+            <section>
+                <article>
+                    <a href="{{ url_for('post', id=post.id) }}">{{ post.title }}</a>
+                    <small> {{ post.date }}</small>
+                    <br />
+                </article>
+            </section>
+        {% endfor %}
+    </nav>
 {% endblock %}

@@ -7,27 +7,32 @@ html {
 }
 
 article {
-    border-radius: 5px;
-    padding: 10px;
-    margin: auto;
-}
-
-section {
     background: rgba(0,0,0,0.1);
     border-radius: 5px;
     padding: 10px;
-    margin: auto;
+}
+
+section {
+    border-radius: 5px;
+    padding: 10px;
 }
 
 header {
-    align-items: center;
-    background: rgba(0,0,0,0.2);
+    background: rgba(0,0,0,0.1);
+    border-radius: 5px;
+    padding: 10px;
+}
+
+nav {
     border-radius: 5px;
     padding: 10px;
 }
 
 @media screen and (min-width: 900px) {
 
-    article {
-        max-width: 40%
+    main {
+        max-width: 40%;
+        margin: auto;
     }
+
+}
