@@ -3,7 +3,6 @@
 {% block article_title %}New Post{% endblock %}
 
 {% block article_content %}
-<main>
   <form action="/new" method="post">
     Title:<br />
     <input type="text" name="title"><br />
@@ -13,5 +12,4 @@
     <input type="password" name="otp"><br />
     <input type="submit" value="Submit">
   </form>
-</main>
 {% endblock %}
