@@ -1,15 +1,15 @@
-{% extends "layout.html" %}
+{% extends "layout_article.html" %}
 
-{% block title %}Edit Post{% endblock %}
+{% block article_title %}Edit Post{% endblock %}
 
-{% block content %}
-<form action="/post/{{ post.id }}/edit" method="post">
-  Title:<br />
-  <input type="text" name="title" value="{{ post.title }}"><br />
-  Content:<br />
-  <textarea name="content">{{ post.content|safe }}</textarea><br /><br />
-  OTP:<br />
-  <input type="password" name="otp"><br />
-  <input type="submit" value="Submit">
-</form>
+{% block article_content %}
+  <form action="/post/{{ post.id }}/edit" method="post">
+    Title:<br />
+    <input type="text" name="title" value="{{ post.title }}"><br />
+    Content:<br />
+    <textarea name="content">{{ post.content|safe }}</textarea><br /><br />
+    OTP:<br />
+    <input type="password" name="otp"><br />
+    <input type="submit" value="Submit">
+  </form>
 {% endblock %}
