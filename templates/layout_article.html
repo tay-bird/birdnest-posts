@@ -1,26 +1,32 @@
 {% extends "layout.html" %}
 
-{% block title %}{% block article_title %}{% endblock %}{% endblock %}
+{% block title %}
+    {{ self.article_title() }}
+{% endblock %}
+
+{% block head %}
+    {% if self.article_title() %}<meta property="og:title" content="{{ self.article_title() }}" />{% endif %}
+    <meta property="og:type" content="article" />
+    {% if self.article_url is defined %}<meta property="og:url" content="{{ self.article_url() }}" />{% endif %}
+    {% if self.article_image is defined %}<meta property="og:image" content="{{ self.article_image() }}" />{% endif %}
+{% endblock %}
+
 {% block content %}
-<article>
-  {% if self.article_title() or self.article_subtitle() %}
-    <header>
-      {% if self.article_title() %}
-        <h1>{{ self.article_title() }}</h1>
-      {% endif %}
-      {% if self.article_subtitle() %}
-        <p>
-          <small>
-            {% block article_subtitle %}{% endblock %}
-          </small>
-        </p>
-      {% endif %}
-    </header>
-  {% endif %}
-  {% if self.article_content() %}
-    <section>
-      <p>{% block article_content %}{% endblock %}</p>
-    </section>
-  {% endif %}
-</article>
+    <article>
+        {% if self.article_title() or self.article_subtitle() %}
+            <header>
+                {% if self.article_title() %}
+                    <h1>{{ self.article_title() }}</h1>
+                {% endif %}
+                {% if self.article_subtitle() %}
+                    <p><small>{{ self.article_subtitle() }}</small></p>
+                {% endif %}
+            </header>
+        {% endif %}
+        {% if self.article_content() %}
+            <section>
+                <p>{{ self.article_content() }}</p>
+            </section>
+        {% endif %}
+    </article>
 {% endblock %}
