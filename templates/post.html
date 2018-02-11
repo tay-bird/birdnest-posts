@@ -1,3 +1,20 @@
-{{ post.title }}
-{{ post.date }}
-<p>{{ post.html|safe }}</p>
+{% extends "layout.html" %}
+
+{% block title %}{{ post.title }}{% endblock %}
+
+{% block content %}
+<article>
+  <h1>{{ post.title }}</h1>
+    <header>
+      <p>
+        <small>
+        Written {{ post.date }}
+        {% if 'edit' in post %}
+          <i>(Edited {{ post.edit }})</i>
+        {% endif %}
+      </small>
+    </p>
+  </header>
+  <p>{{ post.html|safe }}</p>
+</article>
+{% endblock %}

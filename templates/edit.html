@@ -1,3 +1,8 @@
+{% extends "layout.html" %}
+
+{% block title %}Edit Post{% endblock %}
+
+{% block content %}
 <form action="/post/{{ post.id }}/edit" method="post">
   Title:<br />
   <input type="text" name="title" value="{{ post.title }}"><br />
@@ -7,3 +12,4 @@
   <input type="password" name="otp"><br />
   <input type="submit" value="Submit">
 </form>
+{% endblock %}

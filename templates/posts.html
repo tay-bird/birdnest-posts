@@ -1,3 +1,15 @@
-{% for post in posts %}
-    <a href="{{ url_for('post', id=post.id) }}">{{ post.title }}</a> <small>{{ post.date }}</small><br />
-{% endfor %}
+{% extends "layout.html" %}
+
+{% block title %}Birdnest Posts{% endblock %}
+
+{% block content %}
+  </head>
+  <body>
+    <section>
+      {% for post in posts %}
+        <article>
+          <a href="{{ url_for('post', id=post.id) }}">{{ post.title }}</a> <small>{{ post.date }}</small><br />
+        </article>
+      {% endfor %}
+    </section>
+{% endblock %}
