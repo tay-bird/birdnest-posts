@@ -7,6 +7,7 @@
 {% block head %}
     {% if self.article_title() %}<meta property="og:title" content="{{ self.article_title() }}" />{% endif %}
     <meta property="og:type" content="article" />
+    {% if self.article_description is defined %}<meta property="og:description" content="{{ self.article_description() }}" />{% endif %}
     {% if self.article_url is defined %}<meta property="og:url" content="{{ self.article_url() }}" />{% endif %}
     {% if self.article_image is defined %}<meta property="og:image" content="{{ self.article_image() }}" />{% endif %}
 {% endblock %}

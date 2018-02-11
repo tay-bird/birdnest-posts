@@ -1,10 +1,11 @@
 {% extends "layout_article.html" %}
 
-{% block article_title %}{{ post.title }}{% endblock %}
+{% block article_title %}{{ post.title|safe }}{% endblock %}
 {% block article_subtitle %}
   Written {{ post.date }}
   {% if 'edit' in post %}
     <i>(Edited {{ post.edit }})</i>
   {% endif %}
 {% endblock %}
+{% block article_description %}{{ post.content|safe|truncate(155) }}{% endblock %}
 {% block article_content %}{{ post.html|safe }}{% endblock %}
