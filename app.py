@@ -33,7 +33,7 @@ def posts():
     posts = dynamo.tables['posts'].scan()['Items']
     logging.info(posts)
     posts.sort(key=lambda item:item['date'], reverse=True)
-    return render_template('posts.html', posts=posts)
+    return render_template('pages/posts.html', posts=posts)
 
 
 @app.route('/post/<id>')
@@ -49,7 +49,7 @@ def post(id):
 
     else:
         post['html'] = mistune.markdown(post['content'])
-        response = render_template('post.html', post=post)
+        response = render_template('pages/post.html', post=post)
 
     return response
 
@@ -88,7 +88,7 @@ def edit(id):
             response = ('', 404)
 
         else:
-            response = render_template('edit.html', post=post)
+            response = render_template('pages/edit.html', post=post)
 
     return response
 
@@ -112,7 +112,7 @@ def delete(id):
             response = '=)'
 
     else:
-        response = render_template('delete.html')
+        response = render_template('pages/delete.html')
 
     return response
 
@@ -136,7 +136,7 @@ def new():
             return '=)'
 
     else:
-        return render_template('new.html')
+        return render_template('pages/new.html')
 
 
 @app.route('/favicon.ico')
