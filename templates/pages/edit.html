@@ -3,7 +3,7 @@
 {% block article_title %}Edit Post{% endblock %}
 
 {% block article_content %}
-    <form action="/post/{{ post.id }}/edit" method="post">
+    <form action="/{{ post.id }}/edit" method="post">
         Title:<br />
         <input type="text" name="title" value="{{ post.title }}"><br />
         Content:<br />
